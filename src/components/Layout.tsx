@@ -1,6 +1,8 @@
 import React from 'react'
 import {Outlet} from 'react-router-dom'
 import Header from './Header'
+import "scss/_layout.scss"
+import Footer from './Footer'
 
 const Layout:React.FC = () => {
     return (
@@ -9,9 +11,13 @@ const Layout:React.FC = () => {
                 <Header />
             </header>
             
-            <main className='main'><Outlet/></main>
+            <main className='main'>
+                <Outlet/>
+            </main>
             
-            <footer className='footer' >footer</footer>
+            <footer className='footer' >
+                <Footer />
+            </footer>
         </>
     )
 }
