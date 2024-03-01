@@ -1,0 +1,74 @@
+@import "_nullstyle.scss";
+
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('/img/pokemon.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    color: #ffffff;
+    text-align: center;
+    padding: 50px;
+}
+
+.content {
+    max-width: 700px;
+    text-align: center;
+    margin-bottom: auto;
+}
+
+.paragraph {
+    margin-bottom: 20px;
+}
+
+.intro {
+    margin-bottom: 20px;
+  }
+  
+  .title {
+    
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+  }
+  
+  .description {
+    text-align: center;
+  }
+  
+  .features-section,
+  .reasons-section {
+    font-size: medium;
+    font-family: 'Times New Roman', Times, serif;
+    width: 50%;
+    text-align: left;
+  }
+  
+  .features-section {
+    margin-right: auto;
+  }
+  
+  .reasons-section {
+    margin-left: auto;
+  }
+  
+  ul.features {
+    list-style-type: decimal;
+    padding-left: 20px;
+  }
+  
+  ul.features li {
+    text-align: left;
+  }
+  
+  ul.reasons {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  
+  ul.reasons li {
+    text-align: left;
+  }

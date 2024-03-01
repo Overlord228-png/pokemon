@@ -1,0 +1,19 @@
+@import "_nullstyle.scss";
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    background-color: #f44336;
+    padding: 35px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+    font-size: medium;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 15px auto;
+    text-align: center;
+  }
