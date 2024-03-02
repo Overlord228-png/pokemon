@@ -1,9 +1,13 @@
-import React from 'react'
+import { error } from 'console';
+import React, { useEffect, useState } from 'react'
+import axiosPokemon from "Services/axiosPokemon"
 
-export default function CardsPokemonInfo() {
+const CardsPokemonInfo:React.FC=() =>{
+    
     return (
         <div>
-            CardsPokemonInfo
+            Cards Pokemon Info
         </div>
     )
 }
+export default CardsPokemonInfo
