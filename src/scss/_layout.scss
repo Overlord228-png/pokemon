@@ -11,9 +11,24 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.main{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: calc(100vh - 100px); /* Замените 100px на высоту вашего футера */
+    padding-bottom: 100px; /* Замените 100px на высоту вашего футера */
+    position: relative;
+    background-image: url('/img/pokemon.jpg');
+}
+
 .footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: medium;
     font-family: 'Times New Roman', Times, serif;
-    margin: 15px auto;
     text-align: center;
-  }
+    background-color: #FFCC01;
+    bottom: 0;
+    width: 100%;
+}
