@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import "scss/_cards.pokemon.Info.scss"; // Импортируем стили (путь к файлу стилей)
+import "scss/_cards.pokemon.Info.scss";
+import PokemonSearchInput from "components/PokemonSearchInput";
 
-// Интерфейс для объектов Pokemon
 interface Pokemon {
     name: string;
     url: string;
@@ -14,6 +14,9 @@ function CardsPokemonInfo() {
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [pokemonPerPage] = useState<number>(5);
     const [totalPages, setTotalPages] = useState<number>(1);
+    const [searchQuery, setSearchQuery] = useState<string>('');
+    const [error, setError] = useState<string | null>(null);
+    const [validQuery, setValidQuery] = useState<boolean>(true); 
 
     useEffect(() => {
         // Функция для получения списка покемонов с API
@@ -27,8 +30,10 @@ function CardsPokemonInfo() {
                 // Вычисляем общее количество страниц на основе общего количества покемонов
                 const totalCount = response.data.count;
                 setTotalPages(Math.ceil(totalCount / pokemonPerPage));
+                setError(null); // Сброс ошибки при успешном запросе
             } catch (error) {
                 console.error('Error fetching Pokemon:', error);
+                setError('Failed to fetch Pokemon. Please try again.'); // Установка ошибки при неудачном запросе
             }
         };
 
@@ -102,12 +107,33 @@ function CardsPokemonInfo() {
         return pages;
     };
 
-    // Отрисовка компонента
+    // Функция для фильтрации покемонов по имени
+    const filteredPokemon = pokemonList.filter(pokemon => pokemon.name.toLowerCase().includes(searchQuery.toLowerCase()));
+
+    // Обработчик изменения значения в поле поиска
+    const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchQuery(event.target.value);
+    };
+
+    // Обработчик поиска покемонов
+    const handleSearch = (searchQuery: string) => {
+        setSearchQuery(searchQuery);
+        if (searchQuery.length > 20) {
+            setValidQuery(false);
+        } else {
+            setValidQuery(true);
+        }
+    };
+
     return (
         <div className="pokemon-info-container">
+            {error && <div className="error-message">{error}</div>}
             <h1>Pokemon List</h1>
+            <PokemonSearchInput value={searchQuery} onChange={handleSearchChange} onSearch={handleSearch} />
+            {!validQuery && <div className="error-message">Search query is too long. Maximum length is 20 characters.</div>}
+            {filteredPokemon.length === 0 && <div className="error-message">No Pokemon found.</div>}
             <ul>
-                {pokemonList.map((pokemon: Pokemon, index: number) => (
+                {filteredPokemon.map((pokemon: Pokemon, index: number) => (
                     <li key={index}>{pokemon.name}</li>
                 ))}
             </ul>
@@ -120,4 +146,4 @@ function CardsPokemonInfo() {
     );
 }
 
-export default CardsPokemonInfo; // Экспорт компонента по умолчанию
+export default CardsPokemonInfo;
