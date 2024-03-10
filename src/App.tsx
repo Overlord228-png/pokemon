@@ -1,6 +1,6 @@
 import Layout from './components/Layout';
 import About from './pages/About';
-import CardsPokemonInfo from './pages/CardsPokemonInfo';
+import CardsPokemonInfo from 'pages/CardsPokemonInfo';
 import Main from './pages/Main';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
